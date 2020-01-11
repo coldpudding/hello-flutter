@@ -14,16 +14,25 @@ class TextTest extends StatelessWidget {
 class App extends StatelessWidget {
   // final TextDecoration textDecoration = TextDecoration.;
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("我的 Flutter Demo")
-        ),
-        body: HomePage()
+  Widget build(BuildContext context) => MaterialApp(
+    theme: new ThemeData(
+      primarySwatch: Colors.red,
+    ),
+    home: Scaffold(
+      appBar: AppBar(
+        title: Text("我的 Flutter Demo")
+      ),
+      body: HomePage(),
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem( icon: Icon(Icons.home), title: Text("主页") ),
+          BottomNavigationBarItem( icon: Icon(Icons.chat), title: Text("聊天") ),
+          BottomNavigationBarItem( icon: Icon(Icons.person), title: Text("我的") ),
+        ]
       )
-    );
-  }
+    )
+  );
 }
 
 class HomePage extends StatelessWidget {
