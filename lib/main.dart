@@ -62,6 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  var _tabIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -103,6 +105,14 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display4,
             ),
+            Text(
+              'CurrentPageIndex:',
+            ),
+            Text(
+              '$_tabIndex',
+              style: Theme.of(context).textTheme.display1,
+            ),
+
           ],
         ),
       ),
@@ -111,6 +121,28 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _tabIndex,
+         onTap: (index) {
+          setState(() {
+            _tabIndex = index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text("Home")
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            title: Text("Favorite")
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            title: Text("Mine")
+          )
+        ]
+      ),
     );
   }
 }
